@@ -122,7 +122,7 @@ def settle(swap_id: str, preimage: str):
     
     settle = lnd.settle_invoice(preimage)
     if (settle == {}):
-        database.update({"status": "settled", "preimage": preimage, "updated_at": timestamp()}    , (Query().id == swap_id))
+        database.update({"status": "settled", "preimage": preimage, "updated_at": timestamp()}, (Query().id == swap_id))
         return tx
     else:
         raise HTTPException(500, "Invalid pre-image.")
